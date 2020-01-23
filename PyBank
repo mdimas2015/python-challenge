@@ -1,0 +1,88 @@
+# Import
+
+import os
+import csv
+
+# Define the variables
+
+total_profits = []
+total_months = []
+monthly_change = []
+
+# File Location
+
+csvpath = os.path.join("budget_data.csv")
+
+# Open the csv file
+
+with open(csvpath, newline="") as csvfile:
+
+# Store the file in this variable called csvreader
+
+    csvreader = csv.reader(csvfile, delimiter=",")
+    csv_header = next(csvreader)
+
+# Now it's time to iterate thru the rows
+
+    for row in csvreader:
+    
+    # You have to append months and profit in lists
+    
+        total_months.append(row[0])
+        total_profits.append(int(row[1]))
+    
+    # Go thru the profits to understand the monthly change
+    
+    for i in range(len(total_profits)-1):
+        monthly_change.append(total_profits[i+1]-total_profits[i])
+
+# Now it's time to get the maximum and minimum values of the monthly change
+
+max_value = max(monthly_change)
+min_value = min(monthly_change)
+    
+# Use the +1 to move onto the next month
+
+max_increase = monthly_change.index(max(monthly_change)) + 1
+max_decrease = monthly_change.index(min(monthly_change)) + 1
+
+# Time to print and see the results
+
+print("Financial Analysis")
+print("----------------------------")
+print(f"Total Months: {len(total_months)}")
+print(f"Total: ${sum(total_profits)}")
+print(f"Average Change: {round(sum(monthly_change)/len(monthly_change),2)}")
+print(f"Greatest Increase in Profits: {total_months[max_increase]} (${(str(max_value))})")
+print(f"Greatest Decrease in Profits: {total_months[max_decrease]} (${(str(min_value))})")
+
+
+# How to output the files
+
+output_file = Path("python-challenge", "PyBank", "The_Summary.txt")
+
+with open(output_file,"w") as file:
+    
+# Write methods to print to Financial_Analysis_Summary 
+    file.write("Financial Analysis")
+    file.write("\n")
+    file.write("----------------------------")
+    file.write("\n")
+    file.write(f"Total Months: {len(total_months)}")
+    file.write("\n")
+    file.write(f"Total: ${sum(total_profit)}")
+    file.write("\n")
+    file.write(f"Average Change: {round(sum(monthly_profit_change)/len(monthly_profit_change),2)}")
+    file.write("\n")
+    file.write(f"Greatest Increase in Profits: {total_months[max_increase_month]} (${(str(max_increase_value))})")
+    file.write("\n")
+    file.write(f"Greatest Decrease in Profits: {total_months[max_decrease_month]} (${(str(max_decrease_value))})")
+---------------------------------
+# THE RESULTS
+#   Financial Analysis
+#   ----------------------------
+#   Total Months: 86
+#   Total: $38382578
+#   Average  Change: $-2315.12
+#   Greatest Increase in Profits: Feb-2012 ($1926159)
+#   Greatest Decrease in Profits: Sep-2013 ($-2196167)
