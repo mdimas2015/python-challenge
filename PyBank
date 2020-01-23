@@ -63,7 +63,7 @@ output_file = Path("python-challenge", "PyBank", "The_Summary.txt")
 
 with open(output_file,"w") as file:
     
-# Write methods to print to Financial_Analysis_Summary 
+# Write methods to print to The_Summary 
     file.write("Financial Analysis")
     file.write("\n")
     file.write("----------------------------")
@@ -77,12 +77,4 @@ with open(output_file,"w") as file:
     file.write(f"Greatest Increase in Profits: {total_months[max_increase_month]} (${(str(max_increase_value))})")
     file.write("\n")
     file.write(f"Greatest Decrease in Profits: {total_months[max_decrease_month]} (${(str(max_decrease_value))})")
----------------------------------
-# THE RESULTS
-#   Financial Analysis
-#   ----------------------------
-#   Total Months: 86
-#   Total: $38382578
-#   Average  Change: $-2315.12
-#   Greatest Increase in Profits: Feb-2012 ($1926159)
-#   Greatest Decrease in Profits: Sep-2013 ($-2196167)
+
